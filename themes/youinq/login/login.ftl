@@ -6,12 +6,12 @@
     <div id="kc-form">
       <div id="kc-form-wrapper">
         <#if realm.password>
-            <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
+            <form id="kc-form-login" class="w-[350px]" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
                 <#if !usernameHidden??>
-                    <div class="${properties.kcFormGroupClass!}">
-                        <label for="username" class="${properties.kcLabelClass!}"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label>
+                    <div class="mb-4">
+                        <label for="username" class="block text-sm mb-1"><#if !realm.loginWithEmailAllowed>${msg("username")}<#elseif !realm.registrationEmailAsUsername>${msg("usernameOrEmail")}<#else>${msg("email")}</#if></label>
 
-                        <input tabindex="1" id="username" class="${properties.kcInputClass!}" name="username" value="${(login.username!'')}"  type="text" autofocus autocomplete="off"
+                        <input tabindex="1" id="username" class="outline-cyan-500 w-full p-3 border border-gray-300 rounded" name="username" value="${(login.username!'')}"  type="text" autofocus autocomplete="off"
                                aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
                         />
 
@@ -24,10 +24,10 @@
                     </div>
                 </#if>
 
-                <div class="${properties.kcFormGroupClass!}">
-                    <label for="password" class="${properties.kcLabelClass!}">${msg("password")}</label>
+                <div>
+                    <label for="password" class="block text-sm mb-1">${msg("password")}</label>
 
-                    <input tabindex="2" id="password" class="${properties.kcInputClass!}" name="password" type="password" autocomplete="off"
+                    <input tabindex="2" id="password" class="outline-cyan-500 w-full p-3 border border-gray-300 rounded" name="password" type="password" autocomplete="off"
                            aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>"
                     />
 
@@ -39,7 +39,7 @@
 
                 </div>
 
-                <div class="${properties.kcFormGroupClass!} ${properties.kcFormSettingClass!}">
+                <div class="mb-8">
                     <div id="kc-form-options">
                         <#if realm.rememberMe && !usernameHidden??>
                             <div class="checkbox">
@@ -61,9 +61,9 @@
 
                   </div>
 
-                  <div id="kc-form-buttons" class="${properties.kcFormGroupClass!}">
+                  <div id="kc-form-buttons"">
                       <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
-                      <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
+                      <input tabindex="4" class="hover:shadow-none ease-in-out duration-300 uppercase w-full py-3 rounded bg-[#00AFD1] cursor-pointer text-white" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
                   </div>
             </form>
         </#if>

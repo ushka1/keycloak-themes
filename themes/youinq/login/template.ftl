@@ -7,6 +7,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex, nofollow">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
     <#if properties.meta?has_content>
         <#list properties.meta?split(' ') as meta>
             <meta name="${meta?split('==')[0]}" content="${meta?split('==')[1]}"/>
@@ -36,13 +43,14 @@
     </#if>
 </head>
 
-<body>
-<div class="flex flex-col justify-center items-center h-full">
+<body class="text-[#233141]">
+<div class="flex flex-col justify-center items-center h-full pb-[10%]">
     <div id="kc-header" class="${properties.kcHeaderClass!}">
-        <div id="kc-header-wrapper"
-             class="${properties.kcHeaderWrapperClass!}">${kcSanitize(msg("loginTitleHtml",(realm.displayNameHtml!'')))?no_esc}</div>
+        <div id="kc-header-wrapper" class="mb-8">
+            <img src="${url.resourcesPath}/img/logo.png" class="h-16" />
+        </div>
     </div>
-    <div class="p-8 rounded shadow">
+    <div class="px-10 pt-8 pb-10 rounded-lg shadow shadow-gray-300">
         <header class="${properties.kcFormHeaderClass!}">
             <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
                 <div class="${properties.kcLocaleMainClass!}" id="kc-locale">
@@ -67,11 +75,11 @@
                         <span class="subtitle"><span class="required">*</span> ${msg("requiredFields")}</span>
                     </div>
                     <div class="col-md-10">
-                        <h1 id="kc-page-title"><#nested "header"></h1>
+                        <h1 id="kc-page-title" class="mb-6 text-lg"><#nested "header"></h1>
                     </div>
                 </div>
             <#else>
-                <h1 id="kc-page-title"><#nested "header"></h1>
+                <h1 id="kc-page-title" class="mb-6 text-lg"><#nested "header"></h1>
             </#if>
         <#else>
             <#if displayRequiredFields>
@@ -108,7 +116,6 @@
       </header>
       <div id="kc-content">
         <div id="kc-content-wrapper">
-
           <#-- App-initiated actions should not see warning messages about the need to complete the action -->
           <#-- during login.                                                                               -->
           <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>
