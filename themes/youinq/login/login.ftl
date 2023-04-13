@@ -16,7 +16,7 @@
                         />
 
                         <#if messagesPerField.existsError('username','password')>
-                            <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
+                            <span id="input-error" class="text-sm text-red-500" aria-live="polite">
                                     ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
                             </span>
                         </#if>
@@ -32,7 +32,7 @@
                     />
 
                     <#if usernameHidden?? && messagesPerField.existsError('username','password')>
-                        <span id="input-error" class="${properties.kcInputErrorMessageClass!}" aria-live="polite">
+                        <span id="input-error" class="text-sm text-red-500" aria-live="polite">
                                 ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
                         </span>
                     </#if>
@@ -63,7 +63,7 @@
 
                   <div id="kc-form-buttons"">
                       <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
-                      <input tabindex="4" class="hover:shadow-none ease-in-out duration-300 uppercase w-full py-3 rounded bg-[#00AFD1] cursor-pointer text-white" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
+                      <input tabindex="4" class="shadow ease-in-out duration-100 uppercase w-full py-3 rounded bg-[#00AFD1] hover:bg-[#2CBDD9] cursor-pointer text-white" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
                   </div>
             </form>
         </#if>
