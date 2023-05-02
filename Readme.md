@@ -1,6 +1,6 @@
 # Setup
 
-1. Odpal Keycloak.
-1. Idź do themes/readme i podążaj za instrukcjami.
-1. Przekopiuj JAR i rozpakuj unzip.
-1. Gotowe.
+1. Start keycloak.
+1. Go to `themes/readme` and follow instructions.
+1. Copy JAR file and unzip it.
+1. Ready.
